@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Money Musics</string>
+    <string name="title_activity_main">Money Musics</string>
+    <string name="package_name">com.moneymusic.app</string>
+    <string name="custom_url_scheme">com.moneymusic.app</string>
+</resources>
