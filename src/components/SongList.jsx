@@ -1,5 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Play, Pause } from 'lucide-react';
+
+const SongDuration = ({ url }) => {
+  const [duration, setDuration] = useState("--:--");
+
+  useEffect(() => {
+    let audio = new Audio(url);
+    audio.preload = "metadata";
+
+    const handleLoadedMetadata = () => {
+      const time = audio.duration;
+      if (!isNaN(time) && time !== Infinity) {
+        const minutes = Math.floor(time / 60);
+        const seconds = Math.floor(time % 60);
+        setDuration(`${minutes}:${seconds < 10 ? '0' : ''}${seconds}`);
+      }
+    };
+
+    audio.addEventListener("loadedmetadata", handleLoadedMetadata);
+
+    return () => {
+      audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      audio = null;
+    };
+  }, [url]);
+
+  return <span>{duration}</span>;
+};
 
 const SongList = ({ songs, currentSong, isPlaying, onPlaySong }) => {
   return (
@@ -51,7 +78,7 @@ const SongList = ({ songs, currentSong, isPlaying, onPlaySong }) => {
               </div>
               
               <div className="song-duration" style={{ textAlign: 'right', paddingRight: '16px' }}>
-                4:20 {/* Hardcoded duration for placeholder since we don't load metadata for all immediately */}
+                <SongDuration url={song.url} />
               </div>
             </div>
           );
