@@ -603,6 +603,7 @@
       "main-view main-view"
       "now-playing now-playing";
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr 70px;
   }
   .sidebar {
     position: fixed;
@@ -631,10 +632,50 @@
   .song-album {
     display: none;
   }
-  .player-left, .player-right {
+  .now-playing-bar {
+    padding: 0 16px;
+    height: 70px;
+    position: relative;
+  }
+  .player-right {
     display: none;
   }
+  .player-left {
+    display: flex;
+    width: auto;
+    flex: 1;
+    min-width: 0;
+  }
+  .now-playing-cover {
+    width: 48px;
+    height: 48px;
+  }
   .player-center {
+    width: auto;
+  }
+  .player-controls {
+    gap: 16px;
+  }
+  .player-controls .control-btn:nth-child(1),
+  .player-controls .control-btn:nth-child(2),
+  .player-controls .control-btn:nth-child(5) {
+    display: none;
+  }
+  .playback-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
+    gap: 0;
+  }
+  .playback-bar span {
+    display: none;
+  }
+  .progress-container {
+    height: 3px;
+    border-radius: 0;
+  }
+  .progress-handle {
+    display: none;
   }
 }
