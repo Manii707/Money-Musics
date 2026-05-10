@@ -1,12 +1,17 @@
 import React from 'react';
-import { Home, Search, Library, PlusSquare, Heart, Music } from 'lucide-react';
+import { Home, Search, Library, PlusSquare, Heart, Music, X } from 'lucide-react';
 
-const Sidebar = ({ playlists, activePlaylistId, setActivePlaylistId }) => {
+const Sidebar = ({ playlists, activePlaylistId, setActivePlaylistId, isOpen, setIsOpen }) => {
   return (
-    <div className="sidebar">
-      <div className="logo">
-        <Music size={32} />
-        <span>Money Musics</span>
+    <div className={`sidebar ${isOpen ? 'mobile-open' : ''}`}>
+      <div className="logo" style={{ justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Music size={32} />
+          <span>Money Musics</span>
+        </div>
+        <button className="mobile-close-btn" onClick={() => setIsOpen(false)}>
+          <X size={24} />
+        </button>
       </div>
       
       <div className="nav-links">
@@ -43,7 +48,10 @@ const Sidebar = ({ playlists, activePlaylistId, setActivePlaylistId }) => {
           <div 
             key={playlist.id} 
             className={`playlist-item ${activePlaylistId === playlist.id ? 'active' : ''}`}
-            onClick={() => setActivePlaylistId(playlist.id)}
+            onClick={() => {
+              setActivePlaylistId(playlist.id);
+              setIsOpen(false);
+            }}
             style={{ 
               color: activePlaylistId === playlist.id ? 'var(--text-base)' : 'var(--text-subdued)',
               fontWeight: activePlaylistId === playlist.id ? '700' : '500'

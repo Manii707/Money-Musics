@@ -10,6 +10,7 @@ function App() {
   const [currentSong, setCurrentSong] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [activePlaylistId, setActivePlaylistId] = useState("mass_hits");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handlePlaySong = (song) => {
     if (currentSong?.id === song.id) {
@@ -25,10 +26,16 @@ function App() {
 
   return (
     <div className="app-container">
+      <div 
+        className={`sidebar-overlay ${isMobileMenuOpen ? 'mobile-open' : ''}`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      ></div>
       <Sidebar 
         playlists={playlists} 
         activePlaylistId={activePlaylistId} 
         setActivePlaylistId={setActivePlaylistId} 
+        isOpen={isMobileMenuOpen}
+        setIsOpen={setIsMobileMenuOpen}
       />
       <MainContent 
         playlist={activePlaylist}
@@ -36,6 +43,7 @@ function App() {
         currentSong={currentSong} 
         isPlaying={isPlaying} 
         onPlaySong={handlePlaySong} 
+        toggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       />
       <Player 
         currentSong={currentSong} 

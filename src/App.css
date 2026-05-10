@@ -17,6 +17,7 @@
   flex-direction: column;
   padding: 24px 0;
   gap: 24px;
+  transition: transform 0.3s ease;
 }
 
 .main-view {
@@ -133,6 +134,44 @@
 .header-arrows {
   display: flex;
   gap: 16px;
+}
+
+.mobile-menu-btn {
+  display: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  justify-content: center;
+  color: var(--text-subdued);
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.mobile-menu-btn:hover {
+  color: var(--text-base);
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mobile-close-btn {
+  display: none;
+  color: var(--text-subdued);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
 }
 
 .arrow-btn {
@@ -566,7 +605,25 @@
     grid-template-columns: 1fr;
   }
   .sidebar {
-    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    z-index: 1000;
+    transform: translateX(-100%);
+  }
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+  .sidebar-overlay.mobile-open {
+    display: block;
+  }
+  .mobile-menu-btn {
+    display: flex;
+  }
+  .mobile-close-btn {
+    display: block;
   }
   .song-list-header, .song-row {
     grid-template-columns: 40px 1fr 60px;

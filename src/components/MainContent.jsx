@@ -1,12 +1,15 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight, Play, User } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, User, Menu } from 'lucide-react';
 import SongList from './SongList';
 
-const MainContent = ({ playlist, songs, currentSong, isPlaying, onPlaySong }) => {
+const MainContent = ({ playlist, songs, currentSong, isPlaying, onPlaySong, toggleMobileMenu }) => {
   return (
     <div className="main-view" id="main-view">
       <div className="header">
         <div className="header-arrows">
+          <button className="mobile-menu-btn" onClick={toggleMobileMenu}>
+            <Menu size={20} />
+          </button>
           <button className="arrow-btn">
             <ChevronLeft size={24} />
           </button>
