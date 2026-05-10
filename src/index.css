@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg-base: #000000;
+  --bg-highlight: #1a1a1a;
+  --bg-press: #000000;
+  --bg-elevated-base: #242424;
+  --bg-elevated-highlight: #2a2a2a;
+  --bg-elevated-press: #000000;
+  
+  --text-base: #ffffff;
+  --text-subdued: #a7a7a7;
+  --text-bright-accent: #00E5FF;
+  --text-negative: #f15e6c;
+  --text-warning: #ffa42b;
+  --text-positive: #00E5FF;
+  
+  --essential-base: #ffffff;
+  --essential-subdued: #727272;
+  --essential-bright-accent: #00E5FF;
+
+  --accent-color: #00E5FF; /* Electric Cyan */
+  --accent-hover: #33EBFF;
+  --accent-active: #00B8CC;
+  
+  --player-bg: #181818;
+  --sidebar-bg: #000000;
+  --main-bg-start: #212121;
+  --main-bg-end: #121212;
+  
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-base);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
